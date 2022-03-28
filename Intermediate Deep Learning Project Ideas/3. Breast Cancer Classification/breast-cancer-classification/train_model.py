@@ -12,7 +12,10 @@ from tensorflow.keras.callbacks import LearningRateScheduler
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import matplotlib
 matplotlib.use("Agg")
-
+"""
+    Similar Code is available here- https://pyimagesearch.com/2019/02/18/breast-cancer-classification-with-keras-and-deep-learning/
+    DO CHECK THE DATASET EXTRACTION PROCESS
+"""
 
 NUM_EPOCHS = 40
 INIT_LR = 1e-2
@@ -24,9 +27,15 @@ lenVal = len(list(paths.list_images(config.VAL_PATH)))
 lenTest = len(list(paths.list_images(config.TEST_PATH)))
 
 trainLabels = [int(p.split(os.path.sep)[-2]) for p in trainPaths]
+
 trainLabels = to_categorical(trainLabels)
 classTotals = trainLabels.sum(axis=0)
-classWeight = classTotals.max()/classTotals
+
+#classWeight = classTotals.max()/classTotals
+classWeight = dict()
+# loop over all classes and calculate the class weight
+for i in range(0, len(classTotals)):
+    classWeight[i] = classTotals.max() / classTotals[i]
 
 trainAug = ImageDataGenerator(
     rescale=1/255.0,
@@ -64,11 +73,11 @@ testGen = valAug.flow_from_directory(
     batch_size=BS)
 
 model = CancerNet.build(width=48, height=48, depth=3, classes=2)
-opt = Adagrad(lr=INIT_LR, decay=INIT_LR/NUM_EPOCHS)
+opt = Adagrad(learning_rate=INIT_LR, decay=INIT_LR/NUM_EPOCHS)
 model.compile(loss="binary_crossentropy", optimizer=opt, metrics=["accuracy"])
 
 
-M = model.fit_generator(
+M = model.fit(
     trainGen,
     steps_per_epoch=lenTrain//BS,
     validation_data=valGen,

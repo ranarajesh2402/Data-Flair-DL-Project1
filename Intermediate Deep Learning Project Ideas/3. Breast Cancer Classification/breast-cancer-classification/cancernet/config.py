@@ -1,8 +1,8 @@
 import os
 
-INPUT_DATASET = "datasets/original"
+INPUT_DATASET = "datasets/original/"
 
-BASE_PATH = "datasets/IDC_regular_ps50_idx5/"
+BASE_PATH = "datasets/idc"
 TRAIN_PATH = os.path.sep.join([BASE_PATH, "training"])
 VAL_PATH = os.path.sep.join([BASE_PATH, "validation"])
 TEST_PATH = os.path.sep.join([BASE_PATH, "testing"])
