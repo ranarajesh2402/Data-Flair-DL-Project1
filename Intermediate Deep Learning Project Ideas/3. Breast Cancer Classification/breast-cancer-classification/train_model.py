@@ -1,3 +1,6 @@
+
+# You can Run "train_model.ipynb" if have Jupiter Notebook instead of this "train_model.py" file.
+
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -17,7 +20,7 @@ matplotlib.use("Agg")
     DO CHECK THE DATASET EXTRACTION PROCESS
 """
 
-NUM_EPOCHS = 40
+NUM_EPOCHS = 10   # You can put 40 for better accuracy
 INIT_LR = 1e-2
 BS = 32
 
@@ -85,6 +88,7 @@ M = model.fit(
     class_weight=classWeight,
     epochs=NUM_EPOCHS)
 
+
 print("Now evaluating the model")
 testGen.reset()
 pred_indices = model.predict(testGen, steps=(lenTest//BS)+1)
@@ -104,13 +108,14 @@ print(f'Accuracy: {accuracy}')
 print(f'Specificity: {specificity}')
 print(f'Sensitivity: {sensitivity}')
 
+
 N = NUM_EPOCHS
 plt.style.use("ggplot")
 plt.figure()
 plt.plot(np.arange(0, N), M.history["loss"], label="train_loss")
 plt.plot(np.arange(0, N), M.history["val_loss"], label="val_loss")
-plt.plot(np.arange(0, N), M.history["acc"], label="train_acc")
-plt.plot(np.arange(0, N), M.history["val_acc"], label="val_acc")
+plt.plot(np.arange(0, N), M.history["accuracy"], label="train_acc")
+plt.plot(np.arange(0, N), M.history["val_accuracy"], label="val_acc")
 plt.title("Training Loss and Accuracy on the IDC Dataset")
 plt.xlabel("Epoch No.")
 plt.ylabel("Loss/Accuracy")
