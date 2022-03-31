@@ -1,0 +1,2 @@
+We are going to translate this text file using Python.
+Subsequently, we will also translate it into French.
