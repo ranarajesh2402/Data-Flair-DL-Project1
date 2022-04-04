@@ -7,7 +7,7 @@ from watermarking import watermarking
 print("[INFO] camera sensor warming up...")
 vs = VideoStream(0).start()
 time.sleep(2.0)
-watermark = cv2.imread("watermark3.png", cv2.IMREAD_UNCHANGED)
+watermark = cv2.imread("watermark2.png", cv2.IMREAD_UNCHANGED)
 # loop over the frames from the video stream
 while True:
       # grab the frame from the threaded video stream, resize it to
