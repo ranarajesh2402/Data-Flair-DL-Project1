@@ -58,8 +58,8 @@ cv2.destroyAllWindows()
 
 # NOTE: 
 # Input the user id in the terminal. eg., 1
-# Then try to make your face in different ways because it will be stored in the dataset folder upto 30 images as per line no. 48
-# Then go to 02_face_training.py and run the code.
+# Then try to make your face in different ways. Because it will be stored in the dataset folder, upto 30 images as per line no. 48
+# Then go to 02_face_training.py and see the instructions there then run the code.
 
 # CODE REFERENCE: https://github.com/Mjrovai/OpenCV-Face-Recognition 
 #                               OR
