@@ -1,0 +1,20 @@
+STEPS:
+
+
+1. Put some image( like 50 to 60 images) into the 'static/img/' folder.
+
+2. Open Visual Studio Code in '8. Image Reverse Search Engine' folder.
+
+3. Then, run the 'offline.py' as it'll create features in 'static/features/' folder with '.npy' extention.
+
+4. Run the 'server.py'. Where in OUTPUT it'll tell you to click on the link. 
+
+	4.a. Copy the link and paste in any browser(eg., Google Chrome, Micosoft Edge, etc.)
+
+	4.b. Choose the image by doble clicking the image from 'static/img/' folder. Which will be stored in 'static/uploaded/' folder.
+
+	4.c. Then click on submit.
+
+	4.d. It'll show you top 30 images which are similar to the uploaded image.
+		4.d.i)  It'll show the similar images with the score (at which it's closest).
+		4.d.ii) It'll only show only those images that are available in 'static/img/' folder.
